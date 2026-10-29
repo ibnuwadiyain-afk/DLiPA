@@ -1,0 +1,6 @@
+{
+  "name": "DLiPA Legacy — iOS 9+ App Store IPA Manager",
+  "description": "Rebuild of DLiPA (ipatool client) with modern compatibility layers supporting legacy iOS versions dating back to iOS 9.0 (armv7/arm64).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

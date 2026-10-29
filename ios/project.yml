@@ -1,0 +1,45 @@
+name: DLiPA-Legacy
+options:
+  bundleIdPrefix: com.ahmedbafkir
+  deploymentTarget:
+    iOS: "12.0" # Base SDK floor for Xcode 15/16; post-build vtool & PlistBuddy patch Mach-O minos down to iOS 9.0
+  xcodeVersion: "15.0"
+
+settings:
+  base:
+    PRODUCT_NAME: DLiPA
+    PRODUCT_BUNDLE_IDENTIFIER: com.ahmedbafkir.dlipa.legacy
+    MARKETING_VERSION: "1.4.0"
+    CURRENT_PROJECT_VERSION: "140"
+    SWIFT_VERSION: "5.0"
+    TARGETED_DEVICE_FAMILY: "1,2"
+    SUPPORTS_MACCATALYST: NO
+    CODE_SIGN_IDENTITY: ""
+    CODE_SIGNING_REQUIRED: NO
+    CODE_SIGNING_ALLOWED: NO
+    ENABLE_BITCODE: NO
+    DEAD_CODE_STRIPPING: YES
+
+targets:
+  DLiPA-Legacy:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+    info:
+      path: Resources/Info.plist
+      properties:
+        CFBundleDisplayName: DLiPA
+        CFBundleShortVersionString: "1.4.0"
+        CFBundleVersion: "140"
+        LSRequiresIPhoneOS: true
+        MinimumOSVersion: "9.0"
+        UILaunchStoryboardName: ""
+        UIRequiresFullScreen: true
+        UIStatusBarStyle: UIStatusBarStyleLightContent
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
