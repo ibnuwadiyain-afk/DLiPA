@@ -784,7 +784,24 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: DLiPA-iOS9-Compatible-IPA
-          path: ios/DLiPA_v1.4_iOS9_Compat.ipa`,
+          path: ios/DLiPA_v1.4_iOS9_Compat.ipa
+
+  build-web-studio:
+    name: Verify Web Compatibility Studio & Express API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Dependencies & Build Web Bundle
+        run: |
+          if [ -f package.json ]; then
+            npm install --no-audit --no-fund
+            npm run lint
+            npm run build
+          fi`,
   },
   {
     id: 'xcodegen-project-yml',

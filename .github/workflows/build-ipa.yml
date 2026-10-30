@@ -35,13 +35,17 @@ jobs:
   build-ios-ipa:
     name: Build Native iOS 9.0+ IPA (macOS Xcode)
     runs-on: macos-latest
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+      HOMEBREW_NO_INSTALL_CLEANUP: 1
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Install XcodeGen & ldid
         run: |
-          brew install xcodegen ldid
+          which xcodegen || brew install xcodegen
+          which ldid || brew install ldid
 
       - name: Generate Xcode Project from ios/project.yml
         working-directory: ios
@@ -140,12 +144,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
 
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Typecheck & Build Frontend Bundle
+      - name: Install Dependencies & Build Web Bundle
         run: |
-          npm run lint
-          npm run build
+          if [ -f package.json ]; then
+            npm install --no-audit --no-fund
+            npm run lint
+            npm run build
+          fi
