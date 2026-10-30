@@ -148,7 +148,7 @@ jobs:
       - name: Install Dependencies & Build Web Bundle
         run: |
           if [ -f package.json ]; then
-            npm install --no-audit --no-fund
+            npm install --legacy-peer-deps --no-audit --no-fund
             npm run lint
             npm run build
           fi
